@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button default-href="#" (click)="regresar()"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Administrar Gasolineras</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-item lines="none" *ngIf="!agregar"><Button (click)="nuevo()"><ion-icon name="add"></ion-icon></Button></ion-item>
+    <div *ngIf="!agregar" class="cont">
+      <ion-list *ngFor="let gas of gasolineras">
+        <ion-item>
+          <div>
+            <ion-label class="nombre"> {{gas.nombre}}</ion-label>
+            <ion-label class="ubi"><ion-icon name="pin"></ion-icon> {{gas.ubicaciontxt}}</ion-label>
+          </div>
+          <div>
+            <ion-item lines="none">
+              <ion-label class="magna"> MAGNA:</ion-label>
+              <ion-label class="precio"> {{gas.gasolinaver}}</ion-label>
+            </ion-item>
+            <ion-item lines="none" style="margin-top: -10px;">
+              <ion-label class="premium"> PREMIUM:</ion-label>
+              <ion-label class="precio"> {{gas.gasolinaroj}}</ion-label>
+            </ion-item>
+            <ion-item lines="none" style="margin-top: -10px;">
+              <ion-label class="diesel"> DIESEL:</ion-label>
+              <ion-label class="precio"> {{gas.diesel}}</ion-label>
+            </ion-item>
+          </div>
+          <img src="assets/images/dispensador.png" alt="" class="logodispensa">
+        </ion-item>
+      </ion-list>
+    </div>
+    <div *ngIf="agregar">
+      <form (ngSubmit)="submit()" #forma="ngForm">
+        <ion-label class="labels"> Nombre o marca:</ion-label>
+        <ion-item class="inputs" lines="none">
+          <ion-input type="text" 
+          placeholder="Nombre" 
+          [(ngModel)]="gasolinera.nombre" 
+          name="nombre"
+          required></ion-input>
+        </ion-item>
+        <ion-label class="labels"> Ubicacion:</ion-label>
+        <ion-item class="inputs" lines="none">
+          <ion-input type="text" 
+          placeholder="Ubicacion"
+          [(ngModel)]="gasolinera.ubicaciontxt" 
+          name="ubitxt"
+          required></ion-input>
+        </ion-item>
+        <ion-label class="labels"> Ubicacion Maps:</ion-label>
+        <div id="map"></div>
+        <ion-item class="inputs" lines="none">
+        </ion-item>
+        <ion-label class="labels"> Foto:</ion-label>
+        <ion-item lines="none">
+          <label for="file-upload" class="btn_img"><ion-icon name="add-circle-outline"></ion-icon></label>
+          <input (change)="newImageUpload($event)" id="file-upload" type="file" accept="image/*" style="display: none;">
+        </ion-item>
+        <ion-item lines="none">
+          <img class="image" [src]="gasolinera.foto">
+        </ion-item>
+        <ion-label class="labels"> Precios:</ion-label>
+        <ion-item lines="none">
+          <ion-label class="magnala"> MAGNA:</ion-label>
+          <ion-item class="inputgas" >
+            <ion-input type="num" 
+            placeholder="00.00"
+            [(ngModel)]="gasolinera.gasolinaver" 
+            name="verde"
+            class="inputgass"
+            required></ion-input>
+          </ion-item>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label class="premla"> PREMIUM:</ion-label>
+          <ion-item class="inputgas" lines="none">
+            <ion-input type="num" 
+            placeholder="00.00"
+            [(ngModel)]="gasolinera.gasolinaroj" 
+            name="roja"
+            class="inputgass"
+            required></ion-input>
+          </ion-item>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label class="diesla"> DIESEL:</ion-label>
+          <ion-item class="inputgas" lines="none">
+            <ion-input type="num" 
+            placeholder="00.00"
+            [(ngModel)]="gasolinera.diesel" 
+            name="diesel"
+            class="inputgass"
+            required></ion-input>
+          </ion-item>
+        </ion-item>
+        <ion-item lines="none"><Button (click)="cancelar()">Cancelar</Button>
+          <Button type="submit" [disabled]="!forma.valid" >Agregar</Button></ion-item>
+      </form>
+    </div>
+  </ion-content>
+  
+</html>

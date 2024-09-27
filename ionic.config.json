@@ -1,0 +1,7 @@
+{
+  "name": "GasBill",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

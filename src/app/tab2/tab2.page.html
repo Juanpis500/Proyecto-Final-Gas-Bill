@@ -1,0 +1,14 @@
+
+<ion-content [fullscreen]="true">
+    <ion-card *ngFor="let prom of promociones">
+        <img alt="promo 1" src="{{prom.img}}" />
+        <ion-card-header>
+          <ion-card-title>{{prom.titulo}}</ion-card-title>
+          <ion-card-subtitle>{{prom.subtitulo}}</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+            {{prom.descripcion}}
+        </ion-card-content>
+      </ion-card>
+</ion-content>

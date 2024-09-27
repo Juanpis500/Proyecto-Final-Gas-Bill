@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Configurar
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Configurar</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+
+  <form (ngSubmit)="submit()" #forma="ngForm">
+    <ion-label class="labels"> Correo electronico:</ion-label>
+    <ion-item class="inputs" lines="none">
+      <ion-input type="email" 
+      placeholder="Correo" 
+      [(ngModel)]="registro.correo" 
+      name="correo"
+      pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+      required></ion-input>
+    </ion-item>
+    <ion-label class="labels"> Contraseña:</ion-label>
+    <ion-item class="inputs" lines="none">
+      <ion-input type="password" 
+      placeholder="Minimo 7 o mas caracteres"
+      [(ngModel)]="registro.password" 
+      name="password"
+      required></ion-input>
+    </ion-item>
+    <ion-item lines="none"><Button type="submit" [disabled]="!forma.valid" >Ingresar</Button></ion-item>
+  </form>
+
+  <ion-content *ngIf="accesoexito">
+    <p>Agregar mas gasolineras</p>
+    <ion-item lines="none"><Button>Agregar</Button></ion-item>
+  </ion-content>
+</ion-content>

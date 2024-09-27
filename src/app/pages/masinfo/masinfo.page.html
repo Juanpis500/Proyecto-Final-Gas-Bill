@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#" (click)="regresar()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{gasolinera.nombre}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img src="{{gasolinera.foto}}" alt="">
+  <ion-item style="margin-bottom: 10px;" lines="none">
+    <p class="ubi"><ion-icon name="compass"></ion-icon> {{ gasolinera.ubicaciontxt}}</p>
+  </ion-item>
+  <ion-label class="labels"> Precios:</ion-label>
+      <ion-item lines="none" style="margin-top: 10px;" class="cont_pre">
+        <ion-label class="magnala"> MAGNA:</ion-label>
+        <ion-item class="inputgas" lines="none" >
+          <ion-label class="precio"> {{gasolinera.gasolinaver}}</ion-label>
+        </ion-item>
+      </ion-item>
+      <ion-item lines="none" class="cont_pre">
+        <ion-label class="premla"> PREMIUM:</ion-label>
+        <ion-item class="inputgas" lines="none" >
+          <ion-label class="precio"> {{gasolinera.gasolinaroj}}</ion-label>
+        </ion-item>
+      </ion-item>
+      <ion-item lines="none" class="cont_pre" style="margin-bottom: 15px;">
+        <ion-label class="diesla"> DIESEL:</ion-label>
+        <ion-item class="inputgas" lines="none">
+          <ion-label class="precio"> {{gasolinera.diesel}}</ion-label>
+        </ion-item>
+      </ion-item>
+      <ion-label class="labels"> Ubicacion:</ion-label>
+</ion-content>
